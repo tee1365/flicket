@@ -1,11 +1,11 @@
-import { BoxProps } from '@chakra-ui/layout';
+import { FlexProps } from '@chakra-ui/layout';
 import { Flex, Button, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useAppDispatch } from '../redux/hooks';
 import { addToCart, setDisplay } from '../redux/slices/cartSlice';
 import { AddedEvent, Event } from '../types';
 
-interface SingleEventProps extends BoxProps {
+interface SingleEventProps extends FlexProps {
   event: Event;
 }
 

@@ -1,4 +1,4 @@
-import { BoxProps, VStack } from '@chakra-ui/layout';
+import { StackProps, VStack } from '@chakra-ui/layout';
 import { Event } from '../types';
 import SingleEvent from './SingleEvent';
 
@@ -65,13 +65,13 @@ const fakeEvents: Event[] = [
   },
 ];
 
-interface EventListProps extends BoxProps {}
+interface EventListProps extends StackProps {}
 
 const EventList = ({ ...props }: EventListProps): JSX.Element => {
   return (
     <VStack spacing="4" w="50%" align="stretch" {...props}>
       {fakeEvents.map((event) => (
-        <SingleEvent event={event} />
+        <SingleEvent event={event} border="1px" />
       ))}
     </VStack>
   );

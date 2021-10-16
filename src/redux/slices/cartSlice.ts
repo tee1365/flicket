@@ -9,7 +9,7 @@ export interface CartStateType {
 
 const initialState: CartStateType = {
   addedItems: [],
-  isDisplayed: false,
+  isDisplayed: true,
 };
 
 export const cartSlice = createSlice({

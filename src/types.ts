@@ -1,4 +1,4 @@
-export interface Item {
+export interface Event {
   event_id: number;
   event_name: string;
   publisher: string;
@@ -11,6 +11,6 @@ export interface Item {
   tickets_available: number;
 }
 
-export interface AddedItem extends Item {
+export interface AddedEvent extends Event {
   quantity: number;
 }

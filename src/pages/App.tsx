@@ -4,7 +4,7 @@ import EventList from '../components/EventList';
 import { useAppSelector } from '../redux/hooks';
 import { getIsDisplayed } from '../redux/slices/cartSlice';
 
-function App() {
+const App = (): JSX.Element => {
   const isDisplayed = useAppSelector(getIsDisplayed);
 
   return (
@@ -13,6 +13,6 @@ function App() {
       {isDisplayed ? <Cart w="300px" h="300px" border="1px"></Cart> : null}
     </Flex>
   );
-}
+};
 
 export default App;

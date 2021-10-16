@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AddedItem } from '../../types';
+import { AddedEvent } from '../../types';
 import { RootState } from '../store';
 
 export interface CartStateType {
-  addedItems: AddedItem[];
+  addedItems: AddedEvent[];
   isDisplayed: Boolean;
 }
 
@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<AddedItem>) => {
+    addToCart: (state, action: PayloadAction<AddedEvent>) => {
       state.addedItems.push(action.payload);
     },
     setDisplay: (state, action: PayloadAction<Boolean>) => {

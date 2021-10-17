@@ -7,12 +7,18 @@ import { getAddedItems } from '../redux/slices/cartSlice';
 
 const App = (): JSX.Element => {
   const addedItems = useAppSelector(getAddedItems);
+
   return (
     <>
       <Header></Header>
+
       <Flex flexDir="row" m={16} alignItems="flex-start">
         <EventList flex={3} mx={16}></EventList>
-        {addedItems.length ? <Cart flex={1}></Cart> : <Box flex={1}></Box>}
+        {addedItems.length ? (
+          <Cart flex={1} position="sticky" top={16}></Cart>
+        ) : (
+          <Box flex={1}></Box>
+        )}
       </Flex>
     </>
   );

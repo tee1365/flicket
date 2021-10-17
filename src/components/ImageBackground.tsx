@@ -7,7 +7,6 @@ interface ImageBackgroundProps extends BoxProps {
 
 const ImageBackground = ({
   children,
-  height = '100vh',
   ...boxProps
 }: ImageBackgroundProps): JSX.Element => {
   let image =
@@ -15,12 +14,7 @@ const ImageBackground = ({
 
   return (
     <Box backgroundImage={`url(${image})`} backgroundSize="cover">
-      <Box
-        width="100%"
-        background="rgba(0, 0, 0, 0.4)"
-        {...boxProps}
-        height={height}
-      >
+      <Box width="100%" background="rgba(0, 0, 0, 0.4)" {...boxProps}>
         {children}
       </Box>
     </Box>

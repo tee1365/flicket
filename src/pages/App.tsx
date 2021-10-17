@@ -3,21 +3,16 @@ import Cart from '../components/Cart';
 import EventList from '../components/EventList';
 import Header from '../components/Header';
 import { useAppSelector } from '../redux/hooks';
-import { getIsDisplayed } from '../redux/slices/cartSlice';
+import { getAddedItems } from '../redux/slices/cartSlice';
 
 const App = (): JSX.Element => {
-  const isDisplayed = useAppSelector(getIsDisplayed);
-
+  const addedItems = useAppSelector(getAddedItems);
   return (
     <>
       <Header></Header>
-      <Flex flexDir="row" justifyContent="space-around" m={16}>
+      <Flex flexDir="row" m={16} alignItems="flex-start">
         <EventList flex={3} mx={16}></EventList>
-        {isDisplayed ? (
-          <Cart flex={1} border="1px"></Cart>
-        ) : (
-          <Box flex={1}></Box>
-        )}
+        {addedItems.length ? <Cart flex={1}></Cart> : <Box flex={1}></Box>}
       </Flex>
     </>
   );

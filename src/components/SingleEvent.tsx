@@ -4,7 +4,7 @@ import { FlexProps, Heading } from '@chakra-ui/layout';
 import { Flex, Button, Text, IconButton, Icon } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useAppDispatch } from '../redux/hooks';
-import { addToCart, setDisplay } from '../redux/slices/cartSlice';
+import { addToCart } from '../redux/slices/cartSlice';
 import { AddedEvent, Event } from '../types';
 import { GrMapLocation, GrCalendar } from 'react-icons/gr';
 interface SingleEventProps extends FlexProps {
@@ -81,9 +81,7 @@ const SingleEvent = ({
               }}
               icon={<AddIcon />}
               disabled={quantity >= item.tickets_available}
-            >
-              +
-            </IconButton>
+            ></IconButton>
           </Flex>
           <Button
             ml={8}
@@ -91,7 +89,6 @@ const SingleEvent = ({
             onClick={() => {
               const addedItems: AddedEvent = { quantity: quantity, ...item };
               dispatch(addToCart(addedItems));
-              dispatch(setDisplay(true));
               setQuantity(1);
             }}
           >

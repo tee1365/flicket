@@ -71,9 +71,7 @@ const EventList = ({ ...props }: EventListProps): JSX.Element => {
   return (
     <VStack spacing="6" alignItems="center" padding="2" {...props}>
       {fakeEvents.map((event) => (
-        <>
-          <SingleEvent event={event} w="100%"/>
-        </>
+        <SingleEvent event={event} w="100%" key={event.event_id} />
       ))}
     </VStack>
   );

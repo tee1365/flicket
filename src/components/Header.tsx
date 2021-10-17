@@ -1,7 +1,7 @@
-import { Flex, Link, Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import ImageBackground from './ImageBackground';
 
-const Header = () => {
+const Header = (): JSX.Element => {
   return (
     <ImageBackground
       display="flex"

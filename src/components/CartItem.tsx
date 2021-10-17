@@ -1,7 +1,8 @@
-import { Box, BoxProps, Flex, Text } from '@chakra-ui/layout';
-import { Button } from '@chakra-ui/react';
+import { AddIcon, DeleteIcon, MinusIcon } from '@chakra-ui/icons';
+import { Box, BoxProps, Divider, Flex, Heading, Text } from '@chakra-ui/layout';
+import { IconButton } from '@chakra-ui/react';
 import { useAppDispatch } from '../redux/hooks';
-import { setQuantity } from '../redux/slices/cartSlice';
+import { deleteFromCart, setQuantity } from '../redux/slices/cartSlice';
 import { AddedEvent } from '../types';
 
 interface CartItemProps extends BoxProps {
@@ -12,10 +13,28 @@ const CartItem = ({ event, ...props }: CartItemProps): JSX.Element => {
   const dispatch = useAppDispatch();
   return (
     <Box {...props}>
-      <Text>{event.event_name}</Text>
-      <Text>{event.price}</Text>
-      <Flex flexDir="row">
-        <Button
+      <Heading size="md">{event.event_name}</Heading>
+      <Flex alignItems="center" mt={4}>
+        <Heading fontSize="2xl" color="red" flex={3}>{`$${
+          event.price * event.quantity
+        }`}</Heading>
+        <IconButton
+          aria-label="delete-item"
+          icon={<DeleteIcon />}
+          onClick={() => {
+            dispatch(deleteFromCart(event.event_id));
+          }}
+        ></IconButton>
+      </Flex>
+      <Flex flexDir="row" alignItems="center" mt={4} justifyContent="flex-end">
+        {event.quantity > 1 ? (
+          <Text
+            color="gray"
+            flex={1}
+          >{`$${event.price}*${event.quantity}`}</Text>
+        ) : null}
+        <IconButton
+          aria-label="decrease"
           onClick={() => {
             dispatch(
               setQuantity({
@@ -25,11 +44,11 @@ const CartItem = ({ event, ...props }: CartItemProps): JSX.Element => {
             );
           }}
           disabled={event.quantity <= 1}
-        >
-          -
-        </Button>
+          icon={<MinusIcon />}
+        ></IconButton>
         <Text mx={4}>{event.quantity}</Text>
-        <Button
+        <IconButton
+          aria-label="increase"
           onClick={() => {
             if (!(event.quantity >= event.tickets_available)) {
               dispatch(
@@ -40,11 +59,11 @@ const CartItem = ({ event, ...props }: CartItemProps): JSX.Element => {
               );
             }
           }}
+          icon={<AddIcon />}
           disabled={event.quantity >= event.tickets_available}
-        >
-          +
-        </Button>
+        ></IconButton>
       </Flex>
+      <Divider my={4} />
     </Box>
   );
 };

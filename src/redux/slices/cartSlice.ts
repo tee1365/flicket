@@ -4,12 +4,14 @@ import { RootState } from '../store';
 
 export interface CartStateType {
   addedItems: AddedEvent[];
+  drawerDisplay: boolean;
 }
 
 type SetQuantityType = Pick<AddedEvent, 'event_id' | 'quantity'>;
 
 const initialState: CartStateType = {
   addedItems: [],
+  drawerDisplay: false,
 };
 
 export const cartSlice = createSlice({
@@ -42,12 +44,21 @@ export const cartSlice = createSlice({
     clearCart: (state) => {
       state.addedItems = initialState.addedItems;
     },
+    setDrawerDisplay: (state, action: PayloadAction<boolean>) => {
+      state.drawerDisplay = action.payload;
+    },
   },
 });
 
-export const { addToCart, setQuantity, deleteFromCart, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  setQuantity,
+  deleteFromCart,
+  clearCart,
+  setDrawerDisplay,
+} = cartSlice.actions;
 
 export const getAddedItems = (state: RootState) => state.cart.addedItems;
+export const getDrawerDisplay = (state: RootState) => state.cart.drawerDisplay;
 
 export default cartSlice.reducer;

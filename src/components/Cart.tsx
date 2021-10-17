@@ -46,7 +46,7 @@ const Cart = ({ ...props }: CartProps): JSX.Element => {
             onClick={() => {
               toast({
                 title: 'Order Completed.',
-                description: "We will send you a confirmation email soon",
+                description: 'We will send you a confirmation email soon',
                 status: 'success',
                 duration: 5000,
                 isClosable: true,

@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Heading } from '@chakra-ui/layout';
+import { Box, Flex } from '@chakra-ui/layout';
 import Cart from '../components/Cart';
 import EventList from '../components/EventList';
 import Header from '../components/Header';

@@ -22,6 +22,7 @@ export const cartSlice = createSlice({
       const existedEvent = state.addedItems.find(
         (item) => item.event_id === action.payload.event_id
       );
+      // add quantity if existed
       if (existedEvent) {
         existedEvent.quantity += action.payload.quantity;
       } else {

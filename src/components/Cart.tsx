@@ -17,11 +17,14 @@ const Cart = ({ ...props }: CartProps): JSX.Element => {
   const toast = useToast();
   const dispatch = useAppDispatch();
   const addedItems = useAppSelector(getAddedItems);
+
+  // get total price
   const total: number = addedItems.length
     ? addedItems
         .map((item) => item.price * item.quantity)
         .reduce((pre, curr) => pre + curr)
     : 0;
+  
   return (
     <Box
       {...props}

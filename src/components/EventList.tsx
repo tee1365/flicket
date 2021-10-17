@@ -69,9 +69,11 @@ interface EventListProps extends StackProps {}
 
 const EventList = ({ ...props }: EventListProps): JSX.Element => {
   return (
-    <VStack spacing="4" w="50%" align="stretch" {...props}>
+    <VStack spacing="6" alignItems="center" padding="2" {...props}>
       {fakeEvents.map((event) => (
-        <SingleEvent event={event} border="1px" />
+        <>
+          <SingleEvent event={event} w="100%"/>
+        </>
       ))}
     </VStack>
   );
